@@ -1,84 +1,224 @@
-.wrapper {
-    position: relative;
-    perspective: 40em;
-    display: grid;
-    transform-style: preserve-3d;
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+* {
+  outline: none;
+  user-select: none;
+}
+
+body, html {
+  margin: 0;
+  background: #ddd;
+  color: #7a7b7c;
+}
+
+body {
+  font-family: "Raleway", "Microsoft JhengHei", Arial, sans-serif;
+}
+
+.profile {
+  width: 410px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-shadow: 0 0 2rem #babbbc;
+  animation: show-profile 0.5s forwards ease-in-out;
+}
+@keyframes show-profile {
+  0% {
+    width: 0;
   }
-  
-  .card {
-    grid-area: 1 / 1;
-    height: 200px;
-    width: 400px;
-    transform: translateX(10px) rotateY(25deg) rotateX(10deg);
-    background: rgba(249, 198, 26, 0.88);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 30px;
-    color: #000;
-    text-transform: uppercase;
-    font-size: 60px;
-    font-weight: 900;
-    backface-visibility: hidden;
-    box-shadow: 0 10px 30px -3px rgba(0,0,0,.1);
+}
+.profile .photo, .profile .content {
+  box-sizing: border-box;
+}
+.profile .photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #fafafa;
+  background-color: #fafafa;
+  margin-left: -50px;
+  box-shadow: 0 0 0.5rem #babbbc;
+  animation: rotate-photo 0.5s forwards ease-in-out;
+}
+@keyframes rotate-photo {
+  100% {
+    transform: rotate(-360deg);
   }
-  
-  h1 {
-    font-size: 60px;
-    font-weight: 900;
+}
+.profile .photo img {
+  width: 100%;
+}
+.profile .content {
+  padding: 10px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.profile .content::before {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 150px;
+  background-color: #e9f3e6;
+  left: 0;
+  top: -20px;
+  z-index: -1;
+  transform: rotate(-8deg);
+}
+.profile .content .text {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.profile .content .text h3, .profile .content .text h6 {
+  font-weight: normal;
+  margin: 3px 0;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.profile .content .btn {
+  background-color: #abc;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  animation: pop-btn 0.3s both ease-in-out 0.5s;
+}
+@keyframes pop-btn {
+  0% {
+    transform: scale(0);
   }
-  
-  .card .enclosed {
-    background: #000;
-    line-height: 1;
-    color: rgba(249, 198, 26, 1);
-    padding: 0 5px;
-    display: inline-block;
-    transform: translate(-1px, 1px) scale(0.75);
-    transform-origin: right center;
+  80% {
+    transform: scale(1.2);
   }
-  
-  .wrapper:before {
-    --bw: 9px;
-    grid-area: 1 / 1;
-    content: '';
-    backface-visibility: hidden;
-    height: 100%;
-    width: 100%;
-    margin-top: calc(-1 * var(--bw));
-    margin-left: calc(-1 * var(--bw));
-    background: transparent;
-    transform: translateX(-60px) rotateY(-30deg) rotateX(15deg) scale(1.03);
-    pointer-events: none;
-    border: var(--bw) solid #000;
-    box-sizing: content-box;
+  100% {
+    transform: scale(1);
   }
-  
-  
-  .wrapper:hover > div,
-  .wrapper:hover:before {
-    transform: none;
+}
+.profile .content .btn:hover {
+  box-shadow: 0 0 0 5px rgba(170, 187, 204, 0.5);
+}
+.profile .content .btn span {
+  width: 60%;
+  height: 2px;
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  animation: to-hamburger 0.3s forwards ease-in-out;
+}
+.profile .content .btn span::before, .profile .content .btn span::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  background-color: white;
+  transition-duration: 0.3s;
+  transform: rotate(0deg);
+  right: 0;
+}
+.profile .content .btn span::before {
+  margin-top: -7px;
+}
+.profile .content .btn span::after {
+  margin-top: 7px;
+}
+.profile .content .btn.active span {
+  animation: to-arrow 0.3s forwards ease-in-out;
+}
+.profile .content .btn.active span::before, .profile .content .btn.active span::after {
+  width: 60%;
+  right: -1px;
+}
+.profile .content .btn.active span::before {
+  transform: rotate(45deg);
+}
+.profile .content .btn.active span::after {
+  transform: rotate(-45deg);
+}
+@keyframes to-hamburger {
+  from {
+    transform: translateY(-50%) rotate(-180deg);
   }
-  
-  
-  .wrapper > div,
-  .wrapper:before {
-    will-change: transform;
-    transition: .3s transform cubic-bezier(.25,.46,.45,1);
+}
+@keyframes to-arrow {
+  from {
+    transform: translateY(-50%) rotate(0deg);
   }
-  
-  
-  
-  html,
-  body {
-    height: 100%;
+  to {
+    transform: translateY(-50%) rotate(180deg);
   }
-  
-  body {
-    display: grid;
-    place-items: center;
-    background:
-      linear-gradient(to bottom right, #3C4BBD 15%, transparent),
-      radial-gradient(circle at 100% 0%, rgba(255,255,255,.2) 10%, transparent 20%) center center / 15px 15px,
-      linear-gradient(to bottom right, #3C4BBD, #57ADD8);
-  }
+}
+.profile .box {
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 50%;
+  right: -35%;
+  transform: translate(-50%, -50%);
+  transition-duration: 0.3s;
+}
+.profile .box i {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ececec;
+  font-size: 26px;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  left: 18px;
+  top: calc(75px - 50px/2);
+  box-shadow: 0 0 0.5rem #babbbc;
+  transition-duration: 0.3s;
+}
+.profile .box i:hover {
+  transition-delay: initial !important;
+  box-shadow: 0 0 0 5px #babbbc;
+}
+.profile .box.open {
+  opacity: 1;
+}
+.profile .box.open i {
+  left: 60px;
+}
+.profile .box.open i:nth-of-type(1) {
+  transform: rotate(-90deg) translateX(120px) rotate(90deg);
+  transition-delay: 0s;
+}
+.profile .box.open i:nth-of-type(2) {
+  transform: rotate(-45deg) translateX(120px) rotate(45deg);
+  transition-delay: 0.1s;
+}
+.profile .box.open i:nth-of-type(3) {
+  transform: rotate(0deg) translateX(120px) rotate(0deg);
+  transition-delay: 0.2s;
+}
+.profile .box.open i:nth-of-type(4) {
+  transform: rotate(45deg) translateX(120px) rotate(-45deg);
+  transition-delay: 0.3s;
+}
+.profile .box.open i:nth-of-type(5) {
+  transform: rotate(90deg) translateX(120px) rotate(-90deg);
+  transition-delay: 0.4s;
+}
+
+.fab {
+    cursor: pointer;
+}
