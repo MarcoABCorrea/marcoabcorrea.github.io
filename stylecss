@@ -1,0 +1,29 @@
+body {    
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+p {
+    margin: 0;
+    font: 100 48px/75% 'Roboto', sans-serif;
+    letter-spacing: -.05em;
+}
+
+b {
+  font-weight: 300;
+}
+
+small {
+    font: 300 18px/100% 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    color: #ccc;
+}
