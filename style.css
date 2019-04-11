@@ -9,7 +9,7 @@ body, html {
   color: #7a7b7c;
 }
 
-body {
+.profile a, span, body {
   font-family: "Raleway", "Microsoft JhengHei", Arial, sans-serif;
 }
 
