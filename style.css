@@ -1,7 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway';
 * {
   outline: none;
-  user-select: none;
 }
 
 body, html {
@@ -175,9 +174,9 @@ body {
   transition-duration: 0.3s;
 }
 .profile .box i {
-  width: 50px;
+  width: 250px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 20px;
   background-color: #ececec;
   font-size: 26px;
   text-align: center;
@@ -198,9 +197,16 @@ body {
 .profile .box.open i {
   left: 60px;
 }
+
+.profile .box.open i span {
+  font-weight: 200;
+  padding-left: 10px;
+}
+
 .profile .box.open i:nth-of-type(1) {
-  transform: rotate(-90deg) translateX(120px) rotate(90deg);
+  transform: rotate(-90deg) translateX(160px) rotate(90deg);
   transition-delay: 0s;
+  width: 400px;
 }
 .profile .box.open i:nth-of-type(2) {
   transform: rotate(-45deg) translateX(120px) rotate(45deg);
@@ -208,17 +214,24 @@ body {
 }
 .profile .box.open i:nth-of-type(3) {
   transform: rotate(0deg) translateX(120px) rotate(0deg);
-  transition-delay: 0.2s;
+  transition-delay: 0.3s;
 }
 .profile .box.open i:nth-of-type(4) {
   transform: rotate(45deg) translateX(120px) rotate(-45deg);
-  transition-delay: 0.3s;
+  transition-delay: 0.1s;
+  width: 300px;
 }
 .profile .box.open i:nth-of-type(5) {
-  transform: rotate(90deg) translateX(120px) rotate(-90deg);
-  transition-delay: 0.4s;
+  transform: rotate(90deg) translateX(160px) rotate(-90deg);
+  transition-delay: 0s;
 }
 
-.fab, .fas {
+a.link {
     cursor: pointer;
+    text-decoration:none;
+    color: inherit;
+}
+
+a:hover {
+  color: #1b4110;
 }
