@@ -219,6 +219,6 @@ body {
   transition-delay: 0.4s;
 }
 
-.fab {
+.fab, .fas {
     cursor: pointer;
 }
