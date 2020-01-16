@@ -224,6 +224,7 @@ body, html {
 .profile .box.open i:nth-of-type(5) {
   transform: rotate(90deg) translateX(160px) rotate(-90deg);
   transition-delay: 0s;
+  width: 320px;
 }
 
 a.link {
